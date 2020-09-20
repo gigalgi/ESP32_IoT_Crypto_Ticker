@@ -1,0 +1,96 @@
+<html>
+	<head> 
+		<title>ESP32 Crypto Ticker</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="refresh" content="30; url=/">
+ 		<link rel="icon" href="data:,"> 
+ 		<style>
+ 			html{
+ 					font-family: Helvetica; 
+ 					display:inline-block;
+ 					margin: 0px auto; 
+ 					text-align: center;
+ 				}
+  			
+  			h1	{
+  					color: #0F3376; 
+  					padding: 2vh;
+  				}
+  			
+  			p 	{	
+  				font-size: 1rem;
+  				}
+  			.button{
+  					display: inline-block; 
+  					background-color: #e7bd3b;
+  					border: none;
+  					border-radius: 4px;
+  					color: white;
+  					padding: 16px 40px;
+  					text-decoration: none;
+  					font-size: 30px;
+  					margin: 2px; 
+  					cursor: pointer;
+  					}
+
+  			.button2{
+  					background-color: #ff0000;
+  					}
+
+        .button3{
+            background-color: #008f39;
+            }
+
+  		</style>
+  	</head>
+
+  	<body> 
+
+  		<h1>ESP32 Crypto Ticker</h1>
+      	<p>Alerta Mayor que: <strong>"""+au+"""<br><br></strong></p> 
+      	<p>Alerta Menor que: <strong>"""+ad+"""<br><br></strong></p>
+      	<input type="text" placeholder="Alerta..." id="myInput">
+      	<p>Finalice con letra "u" para alertas de subida, o con "d" para alertas de baja.</p><br>
+      	<button type="button"  class="button" onclick="addAlarm();">Agregar Alarma</button>
+      	<button type="button"  class="button button2" onclick="delAlarm();">Borrar Alarma</button>
+        <br><br><input type="text" placeholder="Moneda..." id="myInput2">
+        <p>Ingrese las siglas de la moneda y finalice con 1 para visulizar en la primera posicion del LCD y con 2 para la segunda.</p><br>
+        <button type="button"  class="button button3" onclick="addCoin();">Cambiar Moneda</button>
+
+
+
+
+
+  		<script>
+          //controla los balores para las alarmas
+        	function addAlarm(){
+        		var inputVal = document.getElementById("myInput").value;
+        		if (inputVal.length > 0) {
+        			window.location.replace("/?$="+inputVal+"@");
+        		}
+        		
+        	}
+          //controla los valores para eliminar dentro las alarmas establcidas
+        	function delAlarm(){
+        		var inputVal = document.getElementById("myInput").value;
+        		if (inputVal.length > 0) {
+        			window.location.replace("/?&="+inputVal+"@");
+				    }
+        	 	
+        	}
+
+          //controla las monedas a las cuales se va a seguir el precio
+          function addCoin(){
+            var inputVal = document.getElementById("myInput2").value;
+            if (inputVal.length > 0) {
+              window.location.replace("/?!="+inputVal+"@");
+            }
+            
+          }
+
+
+    </script>
+
+  	</body>
+
+</html>
